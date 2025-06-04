@@ -1,0 +1,4 @@
+# Ignore config files and environment variables containing secrets
+config.json
+.env
+*.env

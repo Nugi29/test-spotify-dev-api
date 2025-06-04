@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Music Player & Playlist Creator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="spotify-logo"></div>
+            <h1>Nugi Music Hub</h1>
+            <p class="subtitle">Search, Play, and Create Amazing Playlists</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="switchTab('search')">🔍 Search & Play</button>
+            <button class="tab-button" onclick="switchTab('top-tracks')">🎵 Top Tracks</button>
+            <button class="tab-button" onclick="switchTab('playlist')">📝 My Playlist</button>
+        </div>
+
+        <!-- Search Tab -->
+        <div id="search" class="tab-content active">
+            <div class="search-container">
+                <h2>🎵 Search Music</h2>
+                <div class="search-box">
+                    <input type="text" class="search-input" id="searchInput"
+                        placeholder="Search for songs, artists, or albums..." onkeypress="handleSearchEnter(event)">
+                    <button class="search-button" onclick="searchMusic()">Search</button>
+                </div>
+
+                <div class="loading" id="searchLoading">
+                    <div class="spinner"></div>
+                    <p>Searching the music universe...</p>
+                </div>
+
+                <div class="search-results" id="searchResults">
+                    <!-- Search results will appear here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Tracks Tab -->
+        <div id="top-tracks" class="tab-content">
+            <div class="search-container">
+                <h2>🏆 Your Top Tracks</h2>
+                <button class="search-button" onclick="fetchTopTracks()">Load My Top Tracks</button>
+
+                <div class="loading" id="topTracksLoading">
+                    <div class="spinner"></div>
+                    <p>Fetching your musical taste...</p>
+                </div>
+
+                <div class="search-results" id="topTracksResults">
+                    <!-- Top tracks will appear here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Playlist Tab -->
+        <div id="playlist" class="tab-content">
+            <div class="playlist-container">
+                <div class="playlist-header">
+                    <h2 class="playlist-title">🎶 My Custom Playlist</h2>
+                    <button class="create-playlist-button" onclick="createPlaylistOnSpotify()">Create on
+                        Spotify</button>
+                </div>
+
+                <div class="current-playlist" id="currentPlaylist">
+                    <p style="text-align: center; opacity: 0.6; padding: 40px;">No tracks added yet. Search and add some
+                        music!</p>
+                </div>
+            </div>
+
+            <div class="spotify-embed" id="spotifyEmbed" style="display: none;">
+                <h3>🎵 Your Created Playlist</h3>
+                <div id="embedContainer"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Player -->
+    <div class="audio-player" id="audioPlayer">
+        <div class="now-playing">
+            <div class="now-playing-cover">🎵</div>
+            <div>
+                <div style="font-weight: bold;" id="nowPlayingTrack">Track Name</div>
+                <div style="opacity: 0.8; font-size: 0.9rem;" id="nowPlayingArtist">Artist</div>
+            </div>
+        </div>
+        <div class="audio-controls">
+            <button class="play-button" id="playPauseBtn" onclick="togglePlayPause()">⏸️</button>
+            <input type="range" class="volume-control" id="volumeSlider" min="0" max="100" value="50"
+                onchange="changeVolume()">
+            <button class="add-button" onclick="closePlayer()">✕</button>
+        </div>
+        <audio id="audioElement" preload="none"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
