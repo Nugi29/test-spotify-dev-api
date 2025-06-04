@@ -1,0 +1,464 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #191414 0%, #1e3c72 50%, #2a5298 100%);
+    min-height: 100vh;
+    color: white;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.spotify-logo {
+    width: 60px;
+    height: 60px;
+    background: #1DB954;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+}
+
+.spotify-logo::before {
+    content: "♫";
+    font-size: 24px;
+    color: white;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, #1DB954, #1ed760);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.tab-button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.tab-button.active {
+    background: linear-gradient(45deg, #1DB954, #1ed760);
+    border-color: #1DB954;
+    box-shadow: 0 4px 15px rgba(29, 185, 84, 0.3);
+}
+
+.tab-button:hover {
+    transform: translateY(-2px);
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.search-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.search-box {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 15px 20px;
+    color: white;
+    font-size: 1rem;
+    backdrop-filter: blur(5px);
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.search-button {
+    background: linear-gradient(45deg, #1DB954, #1ed760);
+    border: none;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.search-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(29, 185, 84, 0.4);
+}
+
+.search-results {
+    display: grid;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.track-item {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.track-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    border-color: rgba(29, 185, 84, 0.5);
+}
+
+.track-cover {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #1DB954, #1ed760);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.track-info {
+    flex: 1;
+}
+
+.track-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #1ed760;
+}
+
+.track-artist {
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+.track-duration {
+    opacity: 0.6;
+    font-size: 0.8rem;
+}
+
+.play-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.play-button,
+.add-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+
+.play-button {
+    background: linear-gradient(45deg, #1DB954, #1ed760);
+    color: white;
+}
+
+.add-button {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.play-button:hover,
+.add-button:hover {
+    transform: scale(1.1);
+}
+
+.playlist-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.playlist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.playlist-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1ed760;
+}
+
+.create-playlist-button {
+    background: linear-gradient(45deg, #1DB954, #1ed760);
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.create-playlist-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(29, 185, 84, 0.4);
+}
+
+.current-playlist {
+    display: grid;
+    gap: 10px;
+}
+
+.playlist-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.remove-button {
+    background: rgba(220, 53, 69, 0.8);
+    border: none;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.spotify-embed {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+}
+
+.embed-placeholder {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    padding: 60px 20px;
+    margin: 20px 0;
+}
+
+.loading {
+    text-align: center;
+    padding: 40px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.loading.show {
+    opacity: 1;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid #1DB954;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    animation: spin 1s linear infinite;
+}
+
+.audio-player {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(25, 20, 20, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(29, 185, 84, 0.3);
+    border-radius: 15px;
+    padding: 15px;
+    min-width: 300px;
+    display: none;
+    animation: slideUp 0.3s ease-out;
+}
+
+.audio-player.show {
+    display: block;
+}
+
+.now-playing {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.now-playing-cover {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #1DB954, #1ed760);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.audio-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.volume-control {
+    width: 100px;
+}
+
+/* Add styles for elements previously using inline styles */
+
+#currentPlaylist .empty-message {
+    text-align: center;
+    opacity: 0.6;
+    padding: 40px;
+}
+
+#spotifyEmbed {
+    display: none;
+}
+
+#spotifyEmbed.show {
+    display: block;
+}
+
+#nowPlayingTrack {
+    font-weight: bold;
+}
+
+#nowPlayingArtist {
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    .tabs {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .search-box {
+        flex-direction: column;
+    }
+    .track-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    .audio-player {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        margin: 20px 0;
+    }
+}
